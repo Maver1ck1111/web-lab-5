@@ -1,0 +1,142 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+p{
+    margin: 0;
+}
+
+.text{
+    overflow-y: auto;
+    display: grid;
+    place-items: center;
+    height: 100%;
+}
+
+.up, .down{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 20vh;
+    height: 20vh;
+    background-color: lightblue;
+}
+
+.insert{
+    height: 20px;
+    width: 50px;
+    margin: 0 20px;
+    align-self: center;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.main{
+    height: 60vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(10, 10vw);
+    grid-template-rows: 10vh 50vh;
+}
+
+.left{
+    grid-column: span 2;
+    grid-row: span 2;
+    background-color: lightsalmon;
+}
+
+.center-up{
+    grid-column: 3 /-1;
+    background-color: lightgreen;
+}
+
+.center-center{
+    grid-column: 3 / 9;
+    display: grid;
+    place-content: center;
+}
+
+.right{
+    grid-column: 9 / -1;
+    background-color: lightsalmon;
+}
+
+
+.up:hover > .insert{
+    display: none;
+}
+
+.up:hover > p{
+    display: none;
+}
+
+.button-container {
+    display: none; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.insert-button,
+.delete-button {
+    margin: 5px 0; 
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.insert-button {
+    background-color: #007BFF; 
+}
+
+.delete-button {
+    background-color: #DC3545; 
+}
+
+.new-rows {
+    display: none; 
+    margin-top: 20px;
+    width: 80%; 
+    text-align: left; 
+}
+
+.new-row {
+    margin-bottom: 10px;
+}
+
+.new-row input {
+    padding: 5px;
+    width: 100%; 
+}
+
+@media (max-width: 500px) {
+    .main{
+        height: 60vh;
+        width: 100vw;
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: 30% 40% 30%;
+    }
+
+    .center-up{
+        grid-column: 1 / -1;
+        grid-row: 1 / 1;
+    }
+
+    .center-center{
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+    }
+
+    .left{
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+        margin-right: 3px;
+    }
+
+    .right{
+        grid-column: 2 / -1;
+        grid-row: 3 / 4;
+        margin-left: 3px;
+    }
+}
