@@ -61,14 +61,21 @@ document.addEventListener("DOMContentLoaded", () => {
     submitButton.addEventListener("click", (event) => {
         event.preventDefault();
 
-        const inputValues = inputField.value.split(",").map(Number);
+        const inputValues = inputField.value.split(",").map(value => {
+            const number = Number(value.trim());
+            return isNaN(number) ? NaN : number;
+        });
 
         if (inputValues.length !== 10) {
             alert("Please enter exactly 10 numbers separated by commas.");
             return;
         }
-        if (inputValues.some(isNaN)) {
-            alert("All entered values must be numbers.");
+        if (inputValues.some(value => isNaN(value))) {
+            alert("All entered values must be valid numbers.");
+            return;
+        }
+        if (inputValues.some(value => value < -1000 || value > 1000)) {
+            alert("All numbers must be between -1000 and 1000.");
             return;
         }
 
@@ -84,6 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
         formContainer.style.display = "none";
     });
 });
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const checkbox = document.getElementById('bold-checkbox');
